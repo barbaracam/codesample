@@ -1,6 +1,9 @@
 <template>
   <li>
-    <div class="labels" :class="memberTitle == 'Teacher' ? 'teacher' : 'student'"><h3>{{ memberName }}</h3></div>    
+    <div class="labels" :class="memberTitle == 'Teacher' ? 'teacher' : 'student'"><h3>{{ memberName }}</h3></div>
+    <div class="images">
+      <img :src="memberPicture" alt="picture" width="150"> 
+    </div>       
     <h4 class="member"><strong>{{memberTitle}}</strong></h4>
     <p>{{ description}}</p>
     <div style="text-align:center">
@@ -13,6 +16,6 @@
 <script>
 export default {
   inject:['selectionM'],
-  props: ['id','memberTitle' ,'memberName', 'description'], 
+  props: ['id','memberTitle' ,'memberName', 'description', 'memberPicture'], 
 };
 </script>

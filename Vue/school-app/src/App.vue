@@ -1,7 +1,8 @@
 v<template>
   <div>
-    <active-person      
+    <active-person v-if="activeMember != null"      
       :member-name="activeMember && activeMember.fullName"
+      :member-picture ="activeMember && activeMember.pic"
       :member-title="activeMember && activeMember.title" 
       :member-text="activeMember && activeMember.description"     
     ></active-person>
@@ -11,37 +12,46 @@ v<template>
 </template>
 
 <script>
-export default {  
+import ActivePerson from './components/ActivePerson.vue';
+import CardBase from './components/CardBase.vue';
+export default { 
+  components:{
+    'active-person': ActivePerson,
+    'card-base': CardBase
+  }, 
   data() {
     return {
       members: [
         {
           id: '0001',
           title: 'Teacher',
-          fullName: 'Pete Johnson',
-          description: 'Pete Johnson is An Inspiring Mentor, dedicated Educator, lifelong learner, passionate about fostering curiosity  and making Education an Adventure  ',
-          
+          fullName: 'Dr. Mary Robertson',
+          description: 'Mary Robertson is an Inspiring mentor, dedicated ducator, lifelong learner, passionate about fostering curiosity  and making education an Adventure  ',
+          pic: '../images/0001.jpg'
         },
         {
           id: '0002',
           title: 'Student',
-          fullName:'Mary Robertson',
+          fullName:'Pete Johnson',
           description:
-            'Mary Robertson: Curious learner navigating the realms of knowledge, blending creativity and intellect to shape a unique educational journey.'
+            'Pete Johnson is a curious learner navigating the realms of knowledge, blending creativity and intellect to shape a unique educational journey.',
+          pic:'../images/0002.jpg'
         },
          {
           id: '0003',
           title: 'Student',
           fullName:'Luis Perez',
           description:
-            'Luis Perez, dedicated student pursuing passions in science and literature, aspiring to make meaningful contributions in both fields.'
+            'Luis Perez, dedicated student pursuing passions in science and literature, aspiring to make meaningful contributions in both fields.',
+            pic:'../images/0003.jpg'
         },
          {
           id: '0004',
           title: 'Student',
           fullName:'Julia Smith',
           description:
-            '"Julia Smith is an aspiring biologist, curious explorer of literature, and advocate for sustainable living. Passionate about learning and growth."'
+            'Julia Smith is an aspiring biologist, curious explorer of literature, and advocate for sustainable living. Passionate about learning and growth.',
+            pic:'../images/0004.jpg'
         },
         
       ],
@@ -143,5 +153,12 @@ button:active {
 }
 .member{
   text-align:center
+}
+img {
+  border-radius:2rem;  
+}
+.images{
+  text-align: center;
+  margin-top: 1rem;
 }
 </style>
